@@ -122,3 +122,6 @@ upload/*.png
 
 # macOS system files
 .DS_Store
+
+# .db for useless database
+.db/
