@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARC</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="mainbody">
+        <header>
+            <h1>ARC</h1>
+            <hr>
+        </header>
+        <section>
+            <strong>Upload an MRI scan of a brain</strong>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="file1">
+                <br><br>
+                <input type="submit" value="Upload">
+            </form>
+            {% if i and j %}
+            <h2>Prediction Result</h2>
+            <p>{{ i }}</p>
+            <p>{{ j }}</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+
+</html>

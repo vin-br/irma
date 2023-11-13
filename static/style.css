@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap');
+
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    padding-left:50px;
+    padding-right:50px;
+    padding-top:25px;
+}
+.mainbody{
+    padding-left:50px;
+    padding-right:50px;
+   
+}
+.logo{
+    height:200px;
+    width:300px;
+}
+h3{
+    background-color: black;
+    color: aqua;
+}
+a{
+    background-color: black;
+    color: hotpink;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+mark{
+    background-color: black;
+    color: aqua;
+}
