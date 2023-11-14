@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,7 +26,6 @@ SECRET_KEY = "django-insecure-pvt9xopt2)mhul%3ipr@1p4@c4^b!tqqe4-9=s(1cswrb0b07j
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -68,17 +67,6 @@ TEMPLATES = [
     },
 ]
 
-# STATIC_URL = "/static/"
-# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "ARC/app/static/")
-# # STATICFILES_DIRS = [
-# #     os.path.join(BASE_DIR, "app/static/css"),
-# # ]
-
-# STATICFILES_FINDERS = [
-#     "django.contrib.staticfiles.finders.FileSystemFinder",
-#     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-# ]
-
 WSGI_APPLICATION = "arc.wsgi.application"
 
 
@@ -111,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -124,10 +111,24 @@ USE_I18N = True
 USE_TZ = True
 
 
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "ARC/media")
+MEDIA_URL = "/media/"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "ARC/app/static/")
+
+# # STATICFILES_DIRS = [
+# #     os.path.join(BASE_DIR, "app/static/css"),
+# # ]
+
+# STATICFILES_FINDERS = [
+#     "django.contrib.staticfiles.finders.FileSystemFinder",
+#     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
