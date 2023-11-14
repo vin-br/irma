@@ -123,5 +123,15 @@ upload/*.png
 # macOS system files
 .DS_Store
 
-# .db for useless database
+# Django Media folder
+# Not useful to add to the project at this point
+media/
+.media/
+Media/
+.Media/
+
+# Django default database
 .db/
+
+# Stored project's temp logo locally
+.logo/

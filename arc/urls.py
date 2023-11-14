@@ -20,5 +20,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("app.urls", namespace="main")),
+    path("", include("app.urls", namespace="index")),
 ]
+
+admin.site.site_header = "My Site Admin Panel"
+admin.site.site_title = "My Site Title"

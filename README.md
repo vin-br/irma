@@ -21,3 +21,17 @@ AI Radiology Copilot (ARC) is a web-based app to detect brain tumors from MRI im
 If the requirements file does not work or is unavailable:
 
 ```pip install Cython Pillow opencv-python torch torchvision pytest scipy matplotlib mock tqdm imageai django```
+
+## Django Server Setup
+
+```python manage.py makemigrations```
+
+```python manage.py migrate```
+
+```python manage.py runserver```
+
+## Testing Instructions
+
+### Unit Tests
+
+```./manage.py test --pattern="tests_*.py" ```
