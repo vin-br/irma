@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -99,12 +100,82 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{asctime} [{levelname}] {module} {process:d} {thread:d} {message}",  # noqa
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{asctime} [{levelname}] {message}",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "WARNING",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "log_file_debug": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "logs/debug.log"),
+            "formatter": "simple",
+        },
+        "log_file_info": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "logs/info.log"),
+            "formatter": "simple",
+        },
+        "log_file_warning": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "logs/warning.log"),
+            "formatter": "verbose",
+        },
+        "log_file_error": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "logs/error.log"),
+            "formatter": "verbose",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": [
+                "console",
+                "log_file_debug",
+                "log_file_info",
+                "log_file_warning",
+                "log_file_error",
+            ],
+            "propagate": True,
+        }
+    },
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
+
+TIME_INPUT_FORMATS = [
+    "%H%M",
+]
 
 USE_I18N = True
 
@@ -134,3 +205,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+TEST_RUNNER = "flake8.main.Flake8TestRunner"
