@@ -130,3 +130,9 @@ Media/
 
 # Django default database
 .db/
+
+# PyCharm folder
+.idea/
+
+# Logs
+.logs/
