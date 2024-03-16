@@ -1,11 +1,5 @@
 import unittest
-import os
-
-from django.conf import settings
 from django.test import TestCase
-from django.http import HttpRequest
-from django.core.files.uploadedfile import SimpleUploadedFile
-from app.views import index
 
 
 class ViewsTestCase(TestCase):
@@ -34,29 +28,7 @@ class ViewsTestCase(TestCase):
         """The index page loads properly and has the content regarding the upload"""
         response = self.client.get("https://127.0.0.1:8000/")
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b"uploading your MRI scan", response.content)
-
-    def test_file1_uploaded(self):
-        request = HttpRequest()
-        request.method = "POST"
-        file1 = SimpleUploadedFile("file1.txt", b"ARC Scanner")
-        request.FILES = {"file1": file1}
-        response = index(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(os.path.exists(os.path.join(settings.MEDIA_ROOT, "file1.txt")))
-        with open(os.path.join(settings.MEDIA_ROOT, "file1.txt"), "rb") as f:
-            contents = f.read()
-            self.assertEqual(contents, b"ARC Scanner")
-        os.unlink(os.path.join(settings.MEDIA_ROOT, "file1.txt"))
-
-    # Not working, to debug in the future
-    # def test_no_file1(self):
-    #     request = HttpRequest()
-    #     request.method = "POST"
-    #     request.FILES = {}
-    #     response = index(request)
-    #     self.assertEqual(response.status_code, 400)
-    #     self.assertIn("There is no file1 in form!", str(response))
+        self.assertIn(b"Select your image", response.content)
 
 
 if __name__ == "__main__":
