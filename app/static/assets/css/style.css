@@ -140,14 +140,14 @@ input[type="file"] {
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     transition: background-color 0.5s;
     text-transform: lowercase;
     font-weight: bold;
     font-family: 'Allerta Stencil', sans-serif;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.1px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-    margin: 0 10px;
+    margin: 0 20px;
     position: relative;
     display: flex;
     align-items: center;
@@ -244,7 +244,6 @@ input[type="file"] {
 }
 
 footer {
-  background-color: rgba(255, 255, 255, 0.15);
   padding: 2rem 0;
   text-align: center;
   display: flex;

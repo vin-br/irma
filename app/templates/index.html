@@ -32,15 +32,10 @@
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="button-group">
-                        <input type="radio" id="brain" name="choice" value="Brain">
-                        <label for="brain">Brain</label>
-
-                        <input type="radio" id="eyes" name="choice" value="Eyes">
-                        <label for="eyes">Eyes</label>
-                    </div>
-                    <div class="button-group">
                         <label for="file1" class="upload-button">Select your image</label>
                         <input type="file" name="file1" id="file1" style="display: none;">
+                    </div>
+                    <div class="button-group">
                         <label for="submit-button" class="upload-button">Ask ARC</label>
                         <input type="submit" id="submit-button" style="display: none;">
                     </div>
@@ -50,23 +45,27 @@
                 <div class="prediction">
                     <!-- Send a prediction to the user -->
                     {% if prediction_made %}
-                    <p>ARC predicts {{ prediction }} with {{ probability|floatformat:2 }}% confidence</p>
+                        {% if yolo %}
+                        <!-- Show YOLO annotated image -->
+                            <img src="data:image/jpeg;base64,{{ annotated_image }}" />
+                        {% endif %}
+                        <!-- Show prediction and probability made by ResNet50V2 -->
+                        <p>ARC predicts {{ prediction }} with {{ probability|floatformat:2 }}% confidence</p>
                     {% endif %}
                 </div>
                 <div>
                     <!-- Send an alert if no image is selected -->
                     {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="message-alert">
-                        <span class="message-text"
-                            style="background: linear-gradient(to right, #ff6f61, #ff8c37, #ff6b81); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{
-                            message }}</span>
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
+                        {% for message in messages %}
+                            <div class="alert {{ message.tags }} alert-dismissible" role="alert" id="message-alert">
+                                <span class="message-text" style="background: linear-gradient(to right, #ff6f61, #ff8c37, #ff6b81); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ message }}</span>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                {% endif %}
                 </div>
+            </div>
             </div>
             <script>
                 // Selecting the alert by ID
