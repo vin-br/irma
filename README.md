@@ -1,14 +1,32 @@
 # ARC
 
-AI Radiology Copilot (ARC) is a web-based app to detect brain tumors from MRI images using a Convolutional Neural Network (CNN) model. 
+AI Radiology Copilot (ARC) 
 
-## Installation Instructions
+Web-based app to detect brain tumors from MRI images using a Convolutional Neural Network (CNN) model. 
 
-```pyenv install 3.11.6```
+## Overview
 
-2. Set the Python version as either local or global: ```pyenv local 3.11.6``` or ```pyenv global 3.11.6```
+### Demo
 
-3. `cd` to move to the project's root directory.
+Check out this [video](path/to/demo.mp4) for a demonstration on how to start and use the app.
+
+### Visuals
+
+<img src="path/to/screenshot_1.png" style="width: 100%; height: auto;">
+
+<img src="path/to/screenshot_3.png" style="width: 100%; height: auto;">
+
+## Installation
+
+This installation uses PyEnv to manage the Python version on your local machine. If you do not wish to install PyEnv, you can download and install Python directly and skip steps 1 and 2.
+
+Please follow these steps to install the project with PyEnv:
+
+1. Install Python with Pyenv: ```pyenv install 3.14.0```
+
+2. Set the Python version as either local or global: ```pyenv local 3.14.0``` or ```pyenv global 3.14.0```
+
+3. Then, use cd to move to the project's folder.
 
 4. Create a virtual environment: ```python -m venv .venv```
 
@@ -16,13 +34,13 @@ AI Radiology Copilot (ARC) is a web-based app to detect brain tumors from MRI im
 
 6. Upgrade pip to the latest version: ```python -m pip install --upgrade pip```
 
-7. Install the packages with either the requirements or the individual list provided if the requirements fail to install: ```pip install -r requirements.txt``` or ```pip install ipykernel numpy pandas plotly torch torchvision django```
+7. Install the project in editable mode: ```python -m pip install -e .```
 
-## Starting the app
+8. Install the packages with either the requirements or the individual list provided if the requirements fail to install: ```pip install -r requirements.txt``` or ```pip install "fastapi[standard]" pillow torch torchvision ipykernel plotly```
 
-- Use Django's runserver command to start the project once it has been installed: ```python manage.py runserver```.
+## Run FastAPI app
 
-- You should not need to makemigration using ```python manage.py makemigrations``` or migrate with ```python manage.py migrate``` since the project does not currently use a database. 
+- Use FastAPI's uvicorn command to start the project from root: ```uvicorn backend.app.main:app --reload```.
 
 ## Unit testing
 
