@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arc"
+version = "0.1.0"
+description = "ARC project"
+readme = "README.md"
+requires-python = "==3.14.*"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*", "frontend*", "models*"]
+exclude = ["legacy*"]
+
+[tool.setuptools]
+py-modules = ["paths"]
+
+[tool.black]
+line-length = 100
